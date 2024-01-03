@@ -26,10 +26,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     protected override void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-        // builder.Entity<User>()
-        //     .HasOne(u => u.LibraryCard)
-        //     .WithOne(lc => lc.User)
-        //     .HasForeignKey<LibraryCard>(lc => lc.UserId); 
+        builder.Entity<User>()
+            .HasOne(u => u.LibraryCard)
+            .WithOne(lc => lc.User)
+            .HasForeignKey<LibraryCard>(lc => lc.UserId); 
        
         // Customize the ASP.NET Identity model and override the defaults if needed.
         // For example, you can rename the ASP.NET Identity table names and more.
