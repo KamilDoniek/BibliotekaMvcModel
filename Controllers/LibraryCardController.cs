@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BilbiotekaMVCmodel.Areas.Identity.Data;
 using BilbiotekaMVCmodel.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BilbiotekaMVCmodel.Controllers
 {
+    [Authorize]
     public class LibraryCardController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -74,6 +76,8 @@ namespace BilbiotekaMVCmodel.Controllers
         }
 
         // GET: LibraryCard/Edit/5
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.LibraryCard == null)
@@ -95,6 +99,8 @@ namespace BilbiotekaMVCmodel.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Edit(int id, [Bind("LibraryCardId,CardNumber,ExpiryDate,UserId")] LibraryCard libraryCard)
         {
             if (id != libraryCard.LibraryCardId)
@@ -127,6 +133,8 @@ namespace BilbiotekaMVCmodel.Controllers
         }
 
         // GET: LibraryCard/Delete/5
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.LibraryCard == null)
@@ -148,6 +156,8 @@ namespace BilbiotekaMVCmodel.Controllers
         // POST: LibraryCard/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             if (_context.LibraryCard == null)

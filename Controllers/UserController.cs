@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BilbiotekaMVCmodel.Areas.Identity.Data;
 using BilbiotekaMVCmodel.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BilbiotekaMVCmodel.Controllers
 {
+    [Authorize]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -70,6 +72,7 @@ namespace BilbiotekaMVCmodel.Controllers
            }
             return View(user);
         }
+        [Authorize(Roles = "Admin")]
 
         // GET: User/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -90,6 +93,8 @@ namespace BilbiotekaMVCmodel.Controllers
         // POST: User/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator")]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UserId,FirstName,LastName,Email,PasswordHash")] User user)
@@ -123,6 +128,8 @@ namespace BilbiotekaMVCmodel.Controllers
         }
 
         // GET: User/Delete/5
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.User == null)
@@ -141,6 +148,8 @@ namespace BilbiotekaMVCmodel.Controllers
         }
 
         // POST: User/Delete/5
+        [Authorize(Roles = "Admin")]
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

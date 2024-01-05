@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BilbiotekaMVCmodel.Areas.Identity.Data;
 using BilbiotekaMVCmodel.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BilbiotekaMVCmodel.Controllers
 {
+    [Authorize]
     public class BookLoanController : Controller
     {
         private readonly ApplicationDbContext _context;
