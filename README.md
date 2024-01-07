@@ -15,8 +15,8 @@
   
 ### rider   
 
- -dotnet add package Microsoft.EntityFrameworkCore.Design
- -dotnet tool install --global dotnet-ef
+ - dotnet add package Microsoft.EntityFrameworkCore.Design
+ - dotnet tool install --global dotnet-ef
  
  - dotnet ef migrations add new 
  - dotnet ef database update
