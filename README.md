@@ -13,7 +13,7 @@
  - Add-Migration "Initial Create"
  - Update-Database
   
-###rider   
+##rider   
 
  -dotnet add package Microsoft.EntityFrameworkCore.Design
  -dotnet tool install --global dotnet-ef
