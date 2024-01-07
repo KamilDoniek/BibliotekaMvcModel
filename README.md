@@ -41,7 +41,7 @@
 2. Zaloguj się używając danych testowego użytkownika.
 3. W zakładce Autorzy , Ksiązki  jest możliwość dodawania nowych danych,
 4. W zakładce Czytelnicy można dodawać nowych czytelników którym możemy dopisywać karte czytelnika
-5. W zakładce wypożyczenia wybieramy po id ksiązki i id czytelnika ksiązki które wypoźycza, okres wypożyczenia to domyślnie 2 tygodnie
+5. W zakładce wypożyczenia wybieramy  id czytelnika i id książki która chcemy wypożyczyć
 
 
    
