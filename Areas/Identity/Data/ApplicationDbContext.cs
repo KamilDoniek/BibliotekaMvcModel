@@ -30,7 +30,20 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
             .HasOne(u => u.LibraryCard)
             .WithOne(lc => lc.User)
             .HasForeignKey<LibraryCard>(lc => lc.UserId); 
-       
+        
+        // builder.Entity<BookLoan>()
+        //     .HasKey(bl => new { bl.BookId, bl.UserId });
+        // builder.Entity<BookLoan>()
+        //     .HasOne(bl => bl.Book)
+        //     .WithMany(b => b.BookLoans)
+        //     .HasForeignKey(bl => bl.BookId)
+        //     .OnDelete(DeleteBehavior.Cascade); // or DeleteBehavior.Restrict if you don't want automatic deletion
+        //
+        // builder.Entity<BookLoan>()
+        //     .HasOne(bl => bl.User)
+        //     .WithMany(u => u.BookLoans)
+        //     .HasForeignKey(bl => bl.UserId)
+        //     .OnDelete(DeleteBehavior.Cascade);
         // Customize the ASP.NET Identity model and override the defaults if needed.
         // For example, you can rename the ASP.NET Identity table names and more.
         // Add your customizations after calling base.OnModelCreating(builder);

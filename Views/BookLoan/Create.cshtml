@@ -10,28 +10,32 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" id="formIdBookLoan"  method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="BookId" class="control-label"></label>
-                <select asp-for="BookId" class ="form-control" asp-items="ViewBag.BookId"></select>
+                <select asp-for="BookId" class="form-control" asp-items="ViewBag.BookId" name="BookId">
+                     <option >wybierz</option>
+                </select>
+                <span asp-validation-for="BookId" class="text-danger"></span>
+
             </div>
             <div class="form-group">
                 <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId" name="UserId">
+                    <option >wybierz</option>
+                </select>
+                <span asp-validation-for="UserId" class="text-danger"></span>
+
+            </div>
+         
+            <div class="form-group">
+                <label asp-for="RentalEndDate" class="control-label"></label>
+                <input asp-for="RentalEndDate" class="form-control" />
+                <span id="ValidComment" asp-validation-for="RentalEndDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="LoanDate" class="control-label"></label>
-                <input asp-for="LoanDate" class="form-control" />
-                <span asp-validation-for="LoanDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DueDate" class="control-label"></label>
-                <input asp-for="DueDate" class="form-control" />
-                <span asp-validation-for="DueDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" id="subitIn"  value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -40,4 +44,55 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
+<script>
+  //  document.addEventListener("DOMContentLoaded", function () {
+        const submitButton = document.querySelector("#formIdBookLoan");
+        const errorSpans2 = document.querySelectorAll(".field-validation-error");
+
+        submitButton.addEventListener("submit", function (e) {
+            
+            if (!validateRentalDates())     e.preventDefault();
+
+            
+        });
+         function validateRentalDates() {
+                    const endDateInput = document.getElementById("RentalEndDate");
+                    const rentalDatesError = errorSpans2[0];
+                    const startDate = new Date();
+                    const dateInputs = new Date('1.01.0001 00:00:00');
+                    
+                    var comment = document.getElementById("ValidComment");
+                    console.log(startDate+"DSTART");
+                    
+                    console.log(endDateInput.value);
+
+                    const endDate = new Date(endDateInput.value);
+                    
+                    console.log(endDateInput.value);
+                    console.log(endDate+"END");
+                                        console.log(errorSpans2);
+
+                    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+                        errorSpans2[2].innerHTML  = "Podaj poprawne daty wypożyczenia.";
+                        comment.innerHTML = "Podaj poprawne daty wypożyczenia.";
+                        return false;
+                    }  
+                    if (endDate <= startDate) {
+                        errorSpans2[2].innerHTML = "Data zakończenia wypożyczenia musi być późniejsza niż data rozpoczęcia.";
+                        comment.textContent = "Data zakończenia wypożyczenia musi być późniejsza niż data rozpoczęcia.";
+                                                     console.log(errorSpans2);
+                        return false;
+                    } 
+                    if (endDate === dateInputs) return false;
+                   
+                       errorSpans2[2].innerHTML = "";
+                        return true;
+                    
+        
+                }
+
+        
+       
+   // });
+</script>
 

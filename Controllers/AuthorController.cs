@@ -46,6 +46,8 @@ namespace BilbiotekaMVCmodel.Controllers
             return View(author);
         }
 
+        [Authorize]
+
         // GET: Author/Create
         public IActionResult Create()
         {
@@ -59,19 +61,27 @@ namespace BilbiotekaMVCmodel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("AuthorId,FirstName,LastName")] Author author)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(author);
+            }
+
             try
             {
                 _context.Add(author);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            catch(Exception ex)
+            catch (Exception e)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(e);
+                throw;
             }
-            return View(author);
+            
+            
+            return RedirectToAction(nameof(Index));
+            
         }
-    [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
         // GET: Author/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -91,7 +101,7 @@ namespace BilbiotekaMVCmodel.Controllers
         // POST: Author/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin,Manager")]
 
         [HttpPost]
         [ValidateAntiForgeryToken]

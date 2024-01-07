@@ -56,22 +56,54 @@ using (var scope  = app.Services.CreateScope())
     var userManager = 
         scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
     
-    string email = "admin@admin.com";
-    string password = "Test123!";
+    string emailAdmin = "admin@admin.com";
+    string passwordAdmin = "Test123!";
     
-    if (await userManager.FindByEmailAsync(email) == null)
-    {
-        var user = new ApplicationUser();
-        
-        user.UserName = email;
-        user.Email = email;
-        user.FirstName = "Admin";
-        user.LastName = "admin";
-        
-        await userManager.CreateAsync(user, password);
-        
-        await userManager.AddToRoleAsync(user, "Admin");
+    string emailManager = "manager@manager.com";
+    string passwordManager = "Test123!";
+    
+    string emailMember = "member@member.com";
+    string passwordMember = "Test123!";
 
+    if (await userManager.FindByEmailAsync(emailAdmin) == null)
+    {
+        var userAdmin = new ApplicationUser();
+
+        userAdmin.UserName = emailAdmin;
+        userAdmin.Email = emailAdmin;
+        userAdmin.FirstName = "Admin";
+        userAdmin.LastName = "admin";
+
+        await userManager.CreateAsync(userAdmin, passwordAdmin);
+
+
+        await userManager.AddToRoleAsync(userAdmin, "Admin");
+    }
+
+    if (await userManager.FindByEmailAsync(emailManager) == null){
+
+            var userManagerTest = new ApplicationUser();
+
+        userManagerTest.UserName = emailManager;
+        userManagerTest.Email = emailManager;
+        userManagerTest.FirstName = "Manager";
+        userManagerTest.LastName = "Manager";
+        await userManager.CreateAsync(userManagerTest, passwordManager);
+
+        await userManager.AddToRoleAsync(userManagerTest, "Manager");
+    }
+    if (await userManager.FindByEmailAsync(emailMember) == null){
+
+    var userMemberTest = new ApplicationUser();
+        
+        userMemberTest.UserName = emailMember;
+        userMemberTest.Email = emailMember;
+        userMemberTest.FirstName = "Member";
+        userMemberTest.LastName = "Member";
+        
+        await userManager.CreateAsync(userMemberTest, passwordMember);
+        
+        await userManager.AddToRoleAsync(userMemberTest, "Member");
     }
 
 }

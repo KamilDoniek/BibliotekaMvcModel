@@ -48,6 +48,8 @@ namespace BilbiotekaMVCmodel.Controllers
         }
 
         // GET: LibraryCard/Create
+        [Authorize]
+
         public IActionResult Create()
         {
             ViewData["UserId"] = new SelectList(_context.Set<User>(), "UserId", "UserId");
@@ -61,22 +63,23 @@ namespace BilbiotekaMVCmodel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("LibraryCardId,CardNumber,ExpiryDate,UserId")] LibraryCard libraryCard)
         {
-            try
+            if (!ModelState.IsValid)
             {
+                ViewData["UserId"] = new SelectList(_context.Set<User>(), "UserId", "UserId", libraryCard.UserId);
+                return View(libraryCard);
+            }
+            
+                libraryCard.ExpiryDate = DateTime.Now.AddYears(2);
                 _context.Add(libraryCard);
+            
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                
-            }
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "UserId", "UserId", libraryCard.UserId);
-            return View(libraryCard);
+           
+            
         }
 
         // GET: LibraryCard/Edit/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
 
         public async Task<IActionResult> Edit(int? id)
         {
@@ -99,7 +102,7 @@ namespace BilbiotekaMVCmodel.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,Manager")]
 
         public async Task<IActionResult> Edit(int id, [Bind("LibraryCardId,CardNumber,ExpiryDate,UserId")] LibraryCard libraryCard)
         {

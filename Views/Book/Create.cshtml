@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" id="formId" >
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Title" class="control-label"></label>
@@ -27,7 +27,7 @@
                 <select asp-for="AuthorId" class ="form-control" asp-items="ViewBag.AuthorId"></select>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" id="submitInput" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -37,3 +37,54 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<script>
+   
+        document.addEventListener("DOMContentLoaded", function () {
+        const submitButton = document.querySelector("#formId");
+        const errorSpans = document.querySelectorAll(".field-validation-error");
+        console.log(errorSpans);
+        submitButton.addEventListener("submit", e =>{
+
+            if (!validateISBN() ) e.preventDefault();
+            if (!validateTitle() ) e.preventDefault();
+
+        });
+
+        function validateTitle() {
+            const titleInput = document.getElementById("Title");
+            const titleError = errorSpans[0];
+            const title = titleInput.value.trim();
+
+            if (title.length === 0) {
+               errorSpans[0].innerHTML = "Pole 'Tytuł' nie może być puste.";
+              return false;               
+           
+            } else {
+               
+            errorSpans[0].innerHTML = "";
+            return true;
+            }
+        }
+
+        function validateISBN() {
+            const isbnInput = document.getElementById("ISBN");
+            const isbn = isbnInput.value;
+           
+
+           var isbnRegex = /^(?:[0-9]{13})$/;
+
+          if (isbnRegex.test(isbn)) {
+              errorSpans[1].innerHTML = "";
+              return true;
+            } else {
+               
+             
+                errorSpans[1].innerHTML = "ISBN musi składać się z 13 cyfr!";
+                 return false;
+            }
+        }
+
+       
+        
+    });
+</script>

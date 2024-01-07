@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" id="formIdAuthor">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -23,7 +23,7 @@
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" id="inputSubmit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -33,3 +33,42 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const submitInput = document.querySelector("#formIdAuthor");
+     const errorSpan = document.querySelectorAll(".field-validation-error");
+
+        submitInput.addEventListener("submit", function (e) {
+            if (!validateFirstName() ) e.preventDefault();
+            if (!validateLastName() ) e.preventDefault();
+
+            
+        });
+
+        function validateFirstName() {
+            const firstNameInput = document.getElementById("FirstName");
+            const firstName = firstNameInput.value.trim();
+            if (firstName.length < 2) {
+                errorSpan[0].innerHTML = " Imie musi miec conajmniej 2 znaki";
+                return false;
+            }
+            else {
+                errorSpan[0].innerHTML = "";
+                return true;
+            }
+        }
+
+        function validateLastName() {
+            const lastNameInput = document.getElementById("LastName");
+            const lastName = lastNameInput.value.trim();
+
+            if (lastName.length < 2) {
+                errorSpan[1].innerHTML = " Nazwisko musi miec conajmniej 2 znaki";
+                  return false;
+            } else {
+                errorSpan[1].innerHTML = "";
+                return true;
+            }
+        }
+    });
+</script>
