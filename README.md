@@ -19,10 +19,11 @@
 1. Admin(ma możliwość dodawania,usuwania,edytowania danych):
    - admin@admin.com
    - Test123!
-2. Manager(ma możliwość dodawania i edytowania danych)
+2. Manager(ma możliwość dodawania i edytowania danych):
    - manager@manager.com
    - Test123!
-3.Member(ma możliwość dodawania danych)
+     
+3. Member(ma możliwość dodawania danych):
   - member@member.com
   - Test123!
 
