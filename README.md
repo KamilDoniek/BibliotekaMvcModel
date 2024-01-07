@@ -10,10 +10,14 @@
 
 1. w pliku appsettings.json skonfiguruj ConnectionStrings
 2. Następnie uruchom migracje
-
  - Add-Migration "Initial Create"
  - Update-Database
-     lub  
+  
+###rider   
+
+ -dotnet add package Microsoft.EntityFrameworkCore.Design
+ -dotnet tool install --global dotnet-ef
+ 
  - dotnet ef migrations add new 
  - dotnet ef database update
 
