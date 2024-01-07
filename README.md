@@ -10,6 +10,10 @@
 
 1. w pliku appsettings.json skonfiguruj ConnectionStrings
 2. Następnie uruchom migracje
+
+ - Add-Migration "Initial Create"
+ - Update-Database
+     lub  
  - dotnet ef migrations add new 
  - dotnet ef database update
 
@@ -24,8 +28,8 @@
    - Test123!
      
 3. Member(ma możliwość dodawania danych):
-  - member@member.com
-  - Test123!
+   - member@member.com
+   - Test123!
 
 ## Działanie Apliakcji 
 
