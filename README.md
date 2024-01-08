@@ -10,6 +10,7 @@
 
 1. w pliku appsettings.json skonfiguruj ConnectionStrings
 2. Następnie uruchom migracje
+   
  - Add-Migration "Initial Create"
  - Update-Database
   
@@ -39,9 +40,9 @@
 
 1. Uruchom aplikację.
 2. Zaloguj się używając danych testowego użytkownika.
-3. W zakładce Autorzy , Ksiązki  jest możliwość dodawania nowych danych,
-4. W zakładce Czytelnicy można dodawać nowych czytelników którym możemy dopisywać karte czytelnika
-5. W zakładce wypożyczenia wybieramy  id czytelnika i id książki która chcemy wypożyczyć
+3. W zakładce Autorzy , Ksiązki  jest możliwość dodawania nowych danych.
+4. W zakładce Czytelnicy można dodawać nowych czytelników którym możemy dopisywać karte czytelnika.
+5. W zakładce wypożyczenia wybieramy  id czytelnika, id książki którą chcemy wypożyczyć i datę do kiedy będzie trwało wypożyczenie.
 
 
    
