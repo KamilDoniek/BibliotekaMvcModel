@@ -51,7 +51,7 @@
 
 1. Uruchom aplikację.
 2. Zaloguj się używając danych testowego użytkownika.
-3. W zakładce Autorzy , Ksiązki  jest możliwość dodawania nowych danych.
+3. W zakładce Autorzy i Ksiązki jest możliwość dodawania nowych danych.
 4. W zakładce Czytelnicy można dodawać nowych czytelników którym możemy dopisywać karte czytelnika.
 5. W zakładce wypożyczenia wybieramy  id czytelnika, id książki którą chcemy wypożyczyć i datę do kiedy będzie trwało wypożyczenie.
 
