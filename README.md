@@ -10,6 +10,15 @@
 
 1. w pliku appsettings.json skonfiguruj ConnectionStrings
 2. Następnie uruchom migracje
+   
+ - Add-Migration "Initial Create"
+ - Update-Database
+  
+### rider   
+
+ - dotnet add package Microsoft.EntityFrameworkCore.Design
+ - dotnet tool install --global dotnet-ef
+ 
  - dotnet ef migrations add new 
  - dotnet ef database update
 
@@ -24,16 +33,16 @@
    - Test123!
      
 3. Member(ma możliwość dodawania danych):
-  - member@member.com
-  - Test123!
+   - member@member.com
+   - Test123!
 
 ## Działanie Apliakcji 
 
 1. Uruchom aplikację.
 2. Zaloguj się używając danych testowego użytkownika.
-3. W zakładce Autorzy , Ksiązki  jest możliwość dodawania nowych danych,
-4. W zakładce Czytelnicy można dodawać nowych czytelników którym możemy dopisywać karte czytelnika
-5. W zakładce wypożyczenia wybieramy po id ksiązki i id czytelnika ksiązki które wypoźycza, okres wypożyczenia to domyślnie 2 tygodnie
+3. W zakładce Autorzy , Ksiązki  jest możliwość dodawania nowych danych.
+4. W zakładce Czytelnicy można dodawać nowych czytelników którym możemy dopisywać karte czytelnika.
+5. W zakładce wypożyczenia wybieramy  id czytelnika, id książki którą chcemy wypożyczyć i datę do kiedy będzie trwało wypożyczenie.
 
 
    
