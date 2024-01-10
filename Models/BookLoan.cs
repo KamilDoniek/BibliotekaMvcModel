@@ -16,11 +16,11 @@ public class FutureDateAttribute : ValidationAttribute
             }
             else
             {
-                return new ValidationResult(ErrorMessage ?? "Date must be in the future.");
+                return new ValidationResult(ErrorMessage ?? "Data nie może być przeszła ");
             }
         }
 
-        return new ValidationResult("Invalid date type");
+        return new ValidationResult("zły typ");
     }
     
 }
@@ -28,10 +28,10 @@ public class BookLoan
 {
     public int BookLoanId { get; set; }
     
-    [Required(ErrorMessage = "The Book field is required.")]
+    [Required(ErrorMessage = "Book ID jest wymagana.")]
     public int? BookId { get; set; }
     
-    [Required(ErrorMessage = "The User field is required.")]
+    [Required(ErrorMessage = "User ID jest wymagana.")]
     public int? UserId { get; set; }
     public DateTime RentalStarDate { get; set; }
     

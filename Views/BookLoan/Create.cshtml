@@ -45,9 +45,9 @@
     <a asp-action="Index">Back to List</a>
 </div>
 <script>
-  //  document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
         const submitButton = document.querySelector("#formIdBookLoan");
-        const errorSpans2 = document.querySelectorAll(".field-validation-error");
+        const errorSpans = document.querySelectorAll(".field-validation-error");
 
         submitButton.addEventListener("submit", function (e) {
             
@@ -57,42 +57,30 @@
         });
          function validateRentalDates() {
                     const endDateInput = document.getElementById("RentalEndDate");
-                    const rentalDatesError = errorSpans2[0];
                     const startDate = new Date();
-                    const dateInputs = new Date('1.01.0001 00:00:00');
                     
                     var comment = document.getElementById("ValidComment");
-                    console.log(startDate+"DSTART");
                     
-                    console.log(endDateInput.value);
 
                     const endDate = new Date(endDateInput.value);
                     
-                    console.log(endDateInput.value);
-                    console.log(endDate+"END");
-                                        console.log(errorSpans2);
-
                     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-                        errorSpans2[2].innerHTML  = "Podaj poprawne daty wypożyczenia.";
+                        errorSpans[2].innerHTML  = "Podaj poprawne daty wypożyczenia.";
                         comment.innerHTML = "Podaj poprawne daty wypożyczenia.";
                         return false;
                     }  
                     if (endDate <= startDate) {
-                        errorSpans2[2].innerHTML = "Data zakończenia wypożyczenia musi być późniejsza niż data rozpoczęcia.";
+                        errorSpans[2].innerHTML = "Data zakończenia wypożyczenia musi być późniejsza niż data rozpoczęcia.";
                         comment.textContent = "Data zakończenia wypożyczenia musi być późniejsza niż data rozpoczęcia.";
-                                                     console.log(errorSpans2);
                         return false;
                     } 
-                    if (endDate === dateInputs) return false;
-                   
-                       errorSpans2[2].innerHTML = "";
-                        return true;
+                  
                     
         
                 }
 
         
        
-   // });
+    });
 </script>
 
