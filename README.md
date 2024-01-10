@@ -9,7 +9,19 @@
 ## Konfiguracja 
 
 1. w pliku appsettings.json skonfiguruj ConnectionStrings
-2. Następnie uruchom migracje
+   
+  - "ConnectionStrings": {
+       "DevConnection":
+"Server=;Database=;Trusted_Connection=True;TrustServerCertificate=True;"
+},
+
+#Podaj nazwę serwera z którą się łączysz i nazwę bazy
+
+- Docker
+ - "ConnectionStrings": {
+    "ApplicationDbContextConnection": "Server=localhost;Database=Biblioteka;User ID=sa;Password= Twoje haslo ;TrustServerCertificate=True;Encrypt=True;"
+  }
+3. Następnie uruchom migracje
    
  - Add-Migration "Initial Create"
  - Update-Database
@@ -36,7 +48,7 @@
    - member@member.com
    - Test123!
 
-## Działanie Apliakcji 
+## Działanie Aplikacji 
 
 1. Uruchom aplikację.
 2. Zaloguj się używając danych testowego użytkownika.
