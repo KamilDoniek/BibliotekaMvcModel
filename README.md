@@ -15,7 +15,7 @@
 "Server=;Database=;Trusted_Connection=True;TrustServerCertificate=True;"
 },
 
-#Podaj nazwę serwera z którą się łączysz i nazwę bazy
+# Podaj nazwę serwera z którą się łączysz i nazwę bazy
 
 - Docker
  - "ConnectionStrings": {
