@@ -15,8 +15,7 @@
 "Server=;Database=;Trusted_Connection=True;TrustServerCertificate=True;"
 },
 
-# Podaj nazwę serwera z którą się łączysz i nazwę bazy
-
+ Podaj nazwę serwera z którą się łączysz i nazwę bazy
 - Docker
  - "ConnectionStrings": {
     "ApplicationDbContextConnection": "Server=localhost;Database=Biblioteka;User ID=sa;Password= Twoje haslo ;TrustServerCertificate=True;Encrypt=True;"
