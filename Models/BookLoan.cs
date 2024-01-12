@@ -16,11 +16,11 @@ public class FutureDateAttribute : ValidationAttribute
             }
             else
             {
-                return new ValidationResult(ErrorMessage ?? "Data nie może być przeszła ");
+                return new ValidationResult(ErrorMessage ?? "Data nie może być przeszła");
             }
         }
 
-        return new ValidationResult("zły typ");
+        return new ValidationResult("Nieprawidłowy typ danych. Wymagana wartość typu DateTime.");
     }
     
 }

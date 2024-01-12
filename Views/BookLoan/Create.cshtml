@@ -6,7 +6,6 @@
 
 <h1>Create</h1>
 
-<h4>BookLoan</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -49,32 +48,63 @@
         const submitButton = document.querySelector("#formIdBookLoan");
         const errorSpans = document.querySelectorAll(".field-validation-error");
 
+
         submitButton.addEventListener("submit", function (e) {
             
-            if (!validateRentalDates())     e.preventDefault();
+            if (!validateRentalDates())  e.preventDefault();
+            if (!validateUserId()) e.preventDefault();
+            if (!validateBookId()) e.preventDefault();
 
             
         });
+        function validateUserId(){
+           let UserId = document.querySelector("#UserId").value; 
+         
+             if (UserId=="wybierz") {
+                   errorSpans[1].innerHTML = "Wybierz id Czytelnika";
+                   return false;
+            
+          }
+             else {
+                    errorSpans[1].innerHTML  = "";
+                    return true;
+                }             
+
+        }
+        function validateBookId(){
+          let BookId = document.querySelector("#BookId").value; 
+
+            if (BookId=="wybierz"){
+                  errorSpans[0].innerHTML = "Wybierz id ksiązki";
+                    return false;
+         } 
+        else {
+                  errorSpans[0].innerHTML  = "";
+                   return true;
+          }  
+            
+        }
          function validateRentalDates() {
                     const endDateInput = document.getElementById("RentalEndDate");
                     const startDate = new Date();
                     
-                    var comment = document.getElementById("ValidComment");
                     
 
-                    const endDate = new Date(endDateInput.value);
-                    
-                    if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+                    const endDate = new Date(endDateInput.value)
+                 
+                   
+                     if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
                         errorSpans[2].innerHTML  = "Podaj poprawne daty wypożyczenia.";
-                        comment.innerHTML = "Podaj poprawne daty wypożyczenia.";
                         return false;
                     }  
-                    if (endDate <= startDate) {
+                    else if (endDate <= startDate) {
                         errorSpans[2].innerHTML = "Data zakończenia wypożyczenia musi być późniejsza niż data rozpoczęcia.";
-                        comment.textContent = "Data zakończenia wypożyczenia musi być późniejsza niż data rozpoczęcia.";
                         return false;
                     } 
-                  
+                   else {
+                      errorSpans[2].innerHTML  = "";
+                         return true;
+                   }  
                     
         
                 }
