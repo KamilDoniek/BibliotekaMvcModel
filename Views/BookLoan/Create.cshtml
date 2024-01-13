@@ -51,7 +51,7 @@
 
         submitButton.addEventListener("submit", function (e) {
             
-            if (!validateRentalDates())  e.preventDefault();
+            if (!validateRentalDates()) e.preventDefault();
             if (!validateUserId()) e.preventDefault();
             if (!validateBookId()) e.preventDefault();
 
@@ -87,12 +87,9 @@
          function validateRentalDates() {
                     const endDateInput = document.getElementById("RentalEndDate");
                     const startDate = new Date();
-                    
-                    
-
+                
                     const endDate = new Date(endDateInput.value)
-                 
-                   
+             
                      if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
                         errorSpans[2].innerHTML  = "Podaj poprawne daty wypożyczenia.";
                         return false;
